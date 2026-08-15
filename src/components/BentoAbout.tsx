@@ -22,15 +22,15 @@ export default function BentoAbout() {
   });
 
   return (
-    <section id="about" className="py-24 dot-bg relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="about" className="py-16 sm:py-24 dot-bg relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-6">
           <div>
             <span className="text-xs font-mono font-semibold tracking-[0.2em] text-accent-purple uppercase block mb-3">
               ABOUT & STACK
             </span>
-            <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+            <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
               About Me<span className="text-accent-blue">.</span>
             </h2>
           </div>
@@ -42,7 +42,7 @@ export default function BentoAbout() {
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Tile 1 & 2: Primary Profile & Bio Card (Takes 3 Columns full width) */}
-          <div className="md:col-span-3 glass-panel rounded-3xl p-8 sm:p-10 relative overflow-hidden group">
+          <div className="md:col-span-3 glass-panel rounded-3xl p-5 sm:p-10 relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-96 h-96 bg-accent-blue/10 rounded-full blur-3xl pointer-events-none" />
 
             <div className="flex flex-col gap-6 relative z-10">
@@ -113,7 +113,7 @@ export default function BentoAbout() {
                 </div>
 
                 {/* Right: Built-in Professional Summary Card */}
-                <div className="lg:col-span-5 flex flex-col justify-between bg-white/[0.02] border border-white/5 rounded-2xl p-6 relative overflow-hidden group/card hover:border-white/10 transition-colors">
+                <div className="lg:col-span-5 flex flex-col justify-between bg-white/[0.02] border border-white/5 rounded-2xl p-5 sm:p-6 relative overflow-hidden group/card hover:border-white/10 transition-colors">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-accent-purple/5 rounded-full blur-2xl pointer-events-none" />
                   
                   <div>
@@ -136,23 +136,23 @@ export default function BentoAbout() {
           </div>
 
           {/* Tile 3: Interactive Skills Stack (Takes 2 Columns) */}
-          <div id="skills" className="md:col-span-2 glass-panel rounded-3xl p-8 flex flex-col justify-between relative group">
+          <div id="skills" className="md:col-span-2 glass-panel rounded-3xl p-5 sm:p-8 flex flex-col justify-between relative group">
             <div>
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-white/5 mb-6 gap-4">
                 <div className="flex items-center gap-2">
-                  <Award className="w-5 h-5 text-accent-purple" />
+                  <Award className="w-5 h-5 text-accent-purple shrink-0" />
                   <h3 className="font-display text-md font-extrabold text-white tracking-wide uppercase">
                     Interactive Stack Profile
                   </h3>
                 </div>
 
                 {/* Subcategory selectors */}
-                <div className="flex flex-wrap items-center gap-1 bg-white/5 rounded-xl p-1 border border-white/5">
+                <div className="flex items-center gap-1 bg-white/5 rounded-xl p-1 border border-white/5 overflow-x-auto no-scrollbar max-w-full">
                   {SKILL_CATEGORIES.map((cat, idx) => (
                     <button
                       key={idx}
                       onClick={() => setActiveCategory(idx)}
-                      className={`text-[10px] font-mono tracking-widest uppercase px-3 py-1.5 rounded-lg transition-all duration-300 ${
+                      className={`text-[10px] font-mono tracking-widest uppercase px-3 py-1.5 rounded-lg whitespace-nowrap transition-all duration-300 ${
                         activeCategory === idx
                           ? "bg-gradient-to-r from-accent-blue to-accent-purple text-white shadow-md font-semibold"
                           : "text-zinc-400 hover:text-white hover:bg-white/5"

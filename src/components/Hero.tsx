@@ -54,21 +54,21 @@ export default function Hero({ onOpenRecruiterModal }: HeroProps) {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-accent-purple/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute top-1/3 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-accent-blue/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center relative z-10 w-full overflow-hidden">
         {/* Left Column: Core Value & Bio */}
-        <div className="lg:col-span-8 flex flex-col items-start">
+        <div className="lg:col-span-8 flex flex-col items-start w-full min-w-0">
           {/* Top Pill Status Tag */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md mb-8 max-w-full"
+            className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md mb-6 max-w-full"
           >
             <span className="relative flex h-2.5 w-2.5 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-teal opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyber-teal"></span>
             </span>
-            <span className="text-xs font-mono font-medium text-zinc-300 leading-normal tracking-wide">
+            <span className="text-[10px] sm:text-xs font-mono font-medium text-zinc-300 leading-tight tracking-wide whitespace-normal break-words max-w-full">
               {DEV_PROFILE.location}
             </span>
           </motion.div>
@@ -78,7 +78,7 @@ export default function Hero({ onOpenRecruiterModal }: HeroProps) {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.08]"
+            className="font-display text-3xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-4 sm:mb-6 leading-[1.08] break-words w-full"
           >
             Kunal Choudhary.
           </motion.h1>
@@ -87,11 +87,11 @@ export default function Hero({ onOpenRecruiterModal }: HeroProps) {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex items-center gap-3 text-lg sm:text-2xl font-mono text-zinc-400 mb-8 min-h-[36px]"
+            className="flex flex-wrap items-center gap-2 text-sm sm:text-2xl font-mono text-zinc-400 mb-6 sm:mb-8 min-h-[44px] w-full min-w-0"
           >
-            <Code className="w-5 h-5 text-accent-blue shrink-0" />
-            <span className="text-zinc-400">I'm a </span>
-            <span className="text-white font-semibold border-b-2 border-accent-purple pb-0.5">
+            <Code className="w-4 h-4 sm:w-5 sm:h-5 text-accent-blue shrink-0" />
+            <span className="text-zinc-400 shrink-0">I'm a </span>
+            <span className="text-white font-semibold border-b-2 border-accent-purple pb-0.5 break-words max-w-full">
               {displayedRole}
             </span>
           </motion.div>
@@ -101,7 +101,7 @@ export default function Hero({ onOpenRecruiterModal }: HeroProps) {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="max-w-xl text-zinc-400 text-base md:text-lg leading-snug font-light mb-10 font-sans"
+            className="max-w-xl text-zinc-400 text-sm sm:text-lg leading-relaxed font-light mb-8 sm:mb-10 font-sans"
           >
             Result-driven <span className="text-white font-medium">Full-Stack & Desktop Developer</span> with commercial freelance experience building live production web applications, automated cloud infrastructure (<span className="text-accent-blue font-medium">AWS/Terraform</span>), and scalable <span className="text-accent-purple italic font-medium">C# .NET 8</span> software.
           </motion.p>
@@ -111,7 +111,7 @@ export default function Hero({ onOpenRecruiterModal }: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-wrap items-center gap-3 w-full sm:w-auto"
+            className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 w-full sm:w-auto"
           >
             {onOpenRecruiterModal && (
               <button

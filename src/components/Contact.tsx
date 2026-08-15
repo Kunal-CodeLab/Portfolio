@@ -82,15 +82,15 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 dot-bg relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="contact" className="py-16 sm:py-24 dot-bg relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Title */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-16 gap-6">
           <div>
             <span className="text-xs font-mono font-semibold tracking-[0.2em] text-cyber-teal uppercase block mb-3">
               GET IN TOUCH
             </span>
-            <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+            <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
               Contact Coordinates<span className="text-accent-blue">.</span>
             </h2>
           </div>
@@ -99,10 +99,10 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-start">
           {/* Contact Details & Direct Actions (5 columns) */}
           <div className="lg:col-span-5 flex flex-col gap-6">
-            <div className="glass-panel rounded-3xl p-8 space-y-6">
+            <div className="glass-panel rounded-3xl p-5 sm:p-8 space-y-6">
               <h3 className="font-display text-xl font-bold text-white mb-2">
                 Reach Out Directly
               </h3>
@@ -173,7 +173,7 @@ export default function Contact() {
 
           {/* Contact Form (7 columns) */}
           <div className="lg:col-span-7">
-            <div className="glass-panel rounded-3xl p-8 sm:p-10 relative overflow-hidden">
+            <div className="glass-panel rounded-3xl p-5 sm:p-10 relative overflow-hidden">
               <h3 className="font-display text-2xl font-bold text-white mb-2">
                 Establish a Connection
               </h3>

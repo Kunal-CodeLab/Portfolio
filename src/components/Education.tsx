@@ -9,13 +9,13 @@ export default function Education() {
   return (
     <>
       {/* 1. Dedicated Education Section */}
-      <section id="education" className="py-24 bg-charcoal/40 dot-bg border-t border-cyber-teal/5 relative">
+      <section id="education" className="py-16 sm:py-24 bg-charcoal/40 dot-bg border-t border-cyber-teal/5 relative">
         {/* Decorative subtle ambient glows */}
         <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-accent-purple/5 rounded-full blur-[120px] pointer-events-none" />
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           {/* Section Headline */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-16 gap-6">
             <div>
               <span className="text-xs font-mono font-semibold tracking-[0.2em] text-accent-purple uppercase block mb-3">
                 Formal Academic Path
@@ -30,7 +30,7 @@ export default function Education() {
           </div>
 
           {/* Education Grid - 3 Full visual cards representing the timeline milestones */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {EDUCATION_TIMELINE.map((edu, idx) => (
               <motion.div
                 key={edu.id}
@@ -38,7 +38,7 @@ export default function Education() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="glass-panel rounded-3xl p-8 relative overflow-hidden group border border-white/5 hover:border-white/10 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all flex flex-col justify-between"
+                className="glass-panel rounded-3xl p-5 sm:p-8 relative overflow-hidden group border border-white/5 hover:border-white/10 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all flex flex-col justify-between"
               >
                 {/* Background highlight glow on hover */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent-purple/5 to-transparent rounded-full blur-2xl pointer-events-none" />
@@ -92,11 +92,11 @@ export default function Education() {
       </section>
 
       {/* 2. Dedicated Certifications Section */}
-      <section id="certifications" className="py-24 bg-charcoal/30 border-t border-white/5 relative">
+      <section id="certifications" className="py-16 sm:py-24 bg-charcoal/30 border-t border-white/5 relative">
         {/* Subtle decorative glowing background */}
         <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-accent-blue/5 rounded-full blur-[100px] pointer-events-none" />
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           {/* Section Headline */}
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div>

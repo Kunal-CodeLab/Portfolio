@@ -30,15 +30,15 @@ export default function Projects() {
   }, [filter, searchQuery]);
 
   return (
-    <section id="projects" className="py-24 dot-bg relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="projects" className="py-16 sm:py-24 dot-bg relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Title */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-6">
           <div>
             <span className="text-xs font-mono font-semibold tracking-[0.2em] text-accent-blue uppercase block mb-3">
               CREATIVE WORKS
             </span>
-            <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+            <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
               Featured Projects<span className="text-accent-purple">.</span>
             </h2>
           </div>
@@ -48,14 +48,14 @@ export default function Projects() {
         </div>
 
         {/* Filter Tabs & Search Bar Row */}
-        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-10 pb-6 border-b border-white/5">
+        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-8 sm:mb-10 pb-6 border-b border-white/5">
           {/* Category Filter Tabs */}
-          <div className="flex flex-wrap items-center gap-1.5 bg-white/5 p-1.5 rounded-2xl border border-white/5 overflow-x-auto">
+          <div className="flex items-center gap-1.5 bg-white/5 p-1.5 rounded-2xl border border-white/5 overflow-x-auto no-scrollbar max-w-full">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-mono tracking-wider uppercase transition-all duration-300 ${
+                className={`px-4 py-2 rounded-xl text-xs font-mono tracking-wider uppercase whitespace-nowrap transition-all duration-300 ${
                   filter === cat
                     ? "bg-gradient-to-r from-accent-purple to-accent-blue text-white shadow-md font-bold"
                     : "text-zinc-400 hover:text-white hover:bg-white/5 font-medium"
@@ -67,7 +67,7 @@ export default function Projects() {
           </div>
 
           {/* Search Input Bar */}
-          <div className="relative min-w-[260px] md:w-80">
+          <div className="relative w-full md:w-80">
             <Search className="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"

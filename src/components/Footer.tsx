@@ -10,7 +10,7 @@ export default function Footer() {
 
   return (
     <footer className="py-12 border-t border-white/5 bg-obsidian text-slate-500 font-mono text-xs">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
         <div>
           <span className="text-gray-300 font-display font-medium">
             Kunal Choudhary <span className="text-accent-blue font-bold">©</span> 2026.
