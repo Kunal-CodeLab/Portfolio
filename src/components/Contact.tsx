@@ -82,7 +82,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-24 dot-bg relative">
+    <section id="contact" className="py-16 sm:py-24 dot-bg relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Title */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-16 gap-6">

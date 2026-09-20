@@ -22,7 +22,7 @@ export default function BentoAbout() {
   });
 
   return (
-    <section id="about" className="py-16 sm:py-24 dot-bg relative">
+    <section id="about" className="py-16 sm:py-24 dot-bg relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-6">
@@ -136,7 +136,7 @@ export default function BentoAbout() {
           </div>
 
           {/* Tile 3: Interactive Skills Stack (Takes 2 Columns) */}
-          <div id="skills" className="md:col-span-2 glass-panel rounded-3xl p-5 sm:p-8 flex flex-col justify-between relative group">
+          <div id="skills" className="md:col-span-2 glass-panel rounded-3xl p-5 sm:p-8 flex flex-col justify-between relative group scroll-mt-24">
             <div>
               <div className="pb-6 border-b border-white/5 mb-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">

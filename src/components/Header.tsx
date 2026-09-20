@@ -12,33 +12,68 @@ export default function Header({ onOpenTerminal }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("about");
 
+  const navLinks = [
+    { label: "About", href: "#about", id: "about" },
+    { label: "Skills", href: "#skills", id: "skills" },
+    { label: "Projects", href: "#projects", id: "projects" },
+    { label: "Education", href: "#education", id: "education" },
+    { label: "Contact", href: "#contact", id: "contact" }
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      const sections = ["about", "projects", "skills", "education", "contact"];
-      const scrollPos = window.scrollY + 220;
+      // Check if at the bottom of the page
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const fullHeight = document.documentElement.scrollHeight;
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && scrollPos >= el.offsetTop) {
-          setActiveSection(sections[i]);
-          break;
+      if (scrollPosition + windowHeight >= fullHeight - 80) {
+        setActiveSection("contact");
+        return;
+      }
+
+      // Ordered list matching exact DOM appearance from top to bottom
+      const sectionIds = ["about", "skills", "projects", "education", "contact"];
+      const viewportThreshold = windowHeight * 0.35;
+      let current = "about";
+
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= viewportThreshold) {
+            current = id;
+          }
         }
       }
+
+      setActiveSection(current);
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { label: "About", href: "#about", id: "about" },
-    { label: "Projects", href: "#projects", id: "projects" },
-    { label: "Skills", href: "#skills", id: "skills" },
-    { label: "Education", href: "#education", id: "education" },
-    { label: "Contact", href: "#contact", id: "contact" }
-  ];
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    setActiveSection(id);
+    setMobileMenuOpen(false);
+
+    const el = document.getElementById(id);
+    if (el) {
+      const headerOffset = 80;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
 
   return (
     <header
@@ -52,6 +87,11 @@ export default function Header({ onOpenTerminal }: HeaderProps) {
         {/* Brand Logo */}
         <a
           href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            setActiveSection("about");
+          }}
           className="font-display text-lg font-extrabold text-white tracking-wider uppercase flex items-center gap-2 group"
         >
           <span className="w-2.5 h-2.5 rounded-full bg-accent-blue group-hover:scale-125 transition-transform" />
@@ -66,6 +106,7 @@ export default function Header({ onOpenTerminal }: HeaderProps) {
               <a
                 key={link.label}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.id)}
                 className={`text-xs font-mono tracking-widest uppercase transition-all duration-200 relative py-1 ${
                   isActive
                     ? "text-white font-bold"
@@ -77,6 +118,7 @@ export default function Header({ onOpenTerminal }: HeaderProps) {
                   <motion.span
                     layoutId="activeNavIndicator"
                     className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-blue rounded-full"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
               </a>
@@ -112,6 +154,7 @@ export default function Header({ onOpenTerminal }: HeaderProps) {
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden p-2 text-zinc-400 hover:text-white"
+          aria-label="Toggle navigation menu"
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -129,8 +172,10 @@ export default function Header({ onOpenTerminal }: HeaderProps) {
             <a
               key={link.label}
               href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-mono text-zinc-300 hover:text-white uppercase tracking-widest py-1"
+              onClick={(e) => handleNavClick(e, link.id)}
+              className={`text-sm font-mono uppercase tracking-widest py-1.5 transition-colors ${
+                activeSection === link.id ? "text-accent-blue font-bold" : "text-zinc-300 hover:text-white"
+              }`}
             >
               {link.label}
             </a>

@@ -9,7 +9,7 @@ export default function Education() {
   return (
     <>
       {/* 1. Dedicated Education Section */}
-      <section id="education" className="py-16 sm:py-24 bg-charcoal/40 dot-bg border-t border-cyber-teal/5 relative">
+      <section id="education" className="py-16 sm:py-24 bg-charcoal/40 dot-bg border-t border-cyber-teal/5 relative scroll-mt-24">
         {/* Decorative subtle ambient glows */}
         <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-accent-blue/5 rounded-full blur-[120px] pointer-events-none" />
         
