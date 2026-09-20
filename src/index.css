@@ -6,11 +6,13 @@
   --font-display: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  --color-obsidian: #020203;
-  --color-charcoal: #09090e;
+  --color-obsidian: #030712;
+  --color-charcoal: #090d16;
   --color-panel: rgba(255, 255, 255, 0.03);
   --color-accent-blue: #3b82f6;
-  --color-accent-purple: #c084fc;
+  --color-accent-indigo: #6366f1;
+  --color-accent-cyan: #06b6d4;
+  --color-accent-purple: #3b82f6;
   --color-cyber-teal: #10b981;
 }
 

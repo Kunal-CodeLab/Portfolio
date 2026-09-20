@@ -136,12 +136,12 @@ export default function Contact() {
                 {/* Phone Card */}
                 <div className="flex items-center justify-between p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-accent-purple/10 border border-accent-purple/20 flex items-center justify-center text-accent-purple">
+                    <div className="w-10 h-10 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center text-accent-blue">
                       <Phone className="w-5 h-5" />
                     </div>
                     <div>
                       <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">Phone / WhatsApp</span>
-                      <a href={`tel:${DEV_PROFILE.phone}`} className="text-xs font-mono text-white font-medium hover:text-accent-purple transition-colors">
+                      <a href={`tel:${DEV_PROFILE.phone}`} className="text-xs font-mono text-white font-medium hover:text-accent-blue transition-colors">
                         {DEV_PROFILE.phone}
                       </a>
                     </div>

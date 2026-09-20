@@ -76,7 +76,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           {project.architecture && (
             <div>
               <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-400 mb-2 flex items-center gap-2">
-                <Code2 className="w-4 h-4 text-accent-purple" />
+                <Code2 className="w-4 h-4 text-accent-blue" />
                 Architecture & Engineering Stack
               </h4>
               <div className="p-3.5 rounded-xl bg-white/5 border border-white/5 text-xs font-mono text-accent-blue">
@@ -129,7 +129,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 rounded-xl bg-gradient-to-r from-accent-purple to-accent-blue text-white text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2 shadow-md hover:opacity-90 transition-opacity"
+                className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2 shadow-md shadow-blue-600/25 border border-blue-400/30 transition-all"
               >
                 <span>Live Demo</span>
                 <ExternalLink className="w-4 h-4" />

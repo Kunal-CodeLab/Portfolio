@@ -11,17 +11,17 @@ export default function Education() {
       {/* 1. Dedicated Education Section */}
       <section id="education" className="py-16 sm:py-24 bg-charcoal/40 dot-bg border-t border-cyber-teal/5 relative">
         {/* Decorative subtle ambient glows */}
-        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-accent-purple/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-accent-blue/5 rounded-full blur-[120px] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           {/* Section Headline */}
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-16 gap-6">
             <div>
-              <span className="text-xs font-mono font-semibold tracking-[0.2em] text-accent-purple uppercase block mb-3">
+              <span className="text-xs font-mono font-semibold tracking-[0.2em] text-accent-blue uppercase block mb-3">
                 Formal Academic Path
               </span>
               <h2 className="font-display text-3xl md:text-5xl font-extrabold text-white tracking-tight">
-                Education Timeline<span className="text-accent-purple">.</span>
+                Education Timeline<span className="text-accent-blue">.</span>
               </h2>
             </div>
             <p className="max-w-md text-zinc-400 text-sm leading-relaxed font-sans">
@@ -41,22 +41,22 @@ export default function Education() {
                 className="glass-panel rounded-3xl p-5 sm:p-8 relative overflow-hidden group border border-white/5 hover:border-white/10 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all flex flex-col justify-between"
               >
                 {/* Background highlight glow on hover */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent-purple/5 to-transparent rounded-full blur-2xl pointer-events-none" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent-blue/5 to-transparent rounded-full blur-2xl pointer-events-none" />
 
                 <div>
                   {/* Card Header Info */}
                   <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-white/5">
                     <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[10px] font-mono text-zinc-300 uppercase">
-                      <Calendar className="w-3.5 h-3.5 text-accent-purple" />
+                      <Calendar className="w-3.5 h-3.5 text-accent-blue" />
                       <span>{edu.period}</span>
                     </div>
-                    <span className="text-[9px] uppercase font-mono font-extrabold tracking-wider text-accent-purple bg-accent-purple/10 px-2.5 py-0.5 rounded-md border border-accent-purple/20">
+                    <span className="text-[9px] uppercase font-mono font-extrabold tracking-wider text-accent-blue bg-accent-blue/10 px-2.5 py-0.5 rounded-md border border-accent-blue/20">
                       {edu.id === "edu-1" ? "Active Degree" : "Graduated"}
                     </span>
                   </div>
 
                   {/* Degree Name */}
-                  <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-accent-purple transition-colors duration-300 leading-snug">
+                  <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-accent-blue transition-colors duration-300 leading-snug">
                     {edu.degree}
                   </h3>
 
@@ -133,7 +133,7 @@ export default function Education() {
                 
                 <div className="flex items-start gap-4 relative z-10 mb-6">
                   {/* Certificate Icon Container */}
-                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-accent-blue group-hover:text-accent-purple group-hover:bg-accent-blue/10 transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-accent-blue group-hover:text-accent-blue group-hover:bg-accent-blue/15 transition-all duration-300">
                     <Bookmark className="w-5 h-5" />
                   </div>
 

@@ -337,7 +337,7 @@ User Question: ${textToSend}`
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(!isOpen)}
-          className="relative flex items-center gap-2.5 px-4 py-3.5 rounded-full bg-gradient-to-r from-accent-purple via-accent-blue to-cyber-teal text-white font-mono text-xs font-bold shadow-2xl hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] transition-all duration-300 border border-white/20"
+          className="relative flex items-center gap-2.5 px-4 py-3.5 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 text-white font-mono text-xs font-bold shadow-2xl hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-all duration-300 border border-blue-400/30"
         >
           <span className="hidden sm:inline">Ask Kunal's AI</span>
           <MessageSquare className="w-4 h-4" />
@@ -359,7 +359,7 @@ User Question: ${textToSend}`
           >
             <div className="p-4 bg-obsidian/90 border-b border-white/10 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-accent-purple to-accent-blue flex items-center justify-center text-white shadow-md">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md">
                   <Bot className="w-5 h-5" />
                 </div>
                 <div>
@@ -417,7 +417,7 @@ User Question: ${textToSend}`
                     className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs ${
                       msg.sender === "user"
                         ? "bg-accent-blue text-white"
-                        : "bg-accent-purple/20 text-accent-purple border border-accent-purple/30"
+                        : "bg-blue-500/20 text-blue-400 border border-blue-500/30"
                     }`}
                   >
                     {msg.sender === "user" ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
@@ -442,7 +442,7 @@ User Question: ${textToSend}`
                           >
                             {act.action === "resume" && <FileText className="w-3 h-3 text-accent-blue" />}
                             {act.action === "email" && <Mail className="w-3 h-3 text-cyber-teal" />}
-                            {act.action === "call" && <Phone className="w-3 h-3 text-accent-purple" />}
+                            {act.action === "call" && <Phone className="w-3 h-3 text-accent-blue" />}
                             <span>{act.action === "email" && copied ? "Copied!" : act.label}</span>
                           </button>
                         ))}
@@ -462,7 +462,7 @@ User Question: ${textToSend}`
 
               {isLoading && (
                 <div className="flex items-center gap-2 text-xs font-mono text-zinc-400 p-2">
-                  <Bot className="w-4 h-4 text-accent-purple animate-pulse" />
+                  <Bot className="w-4 h-4 text-accent-blue animate-pulse" />
                   <span>AI Twin is checking Kunal's resume data...</span>
                 </div>
               )}

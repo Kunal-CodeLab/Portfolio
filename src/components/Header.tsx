@@ -42,7 +42,7 @@ export default function Header({ onOpenTerminal }: HeaderProps) {
           className="font-display text-lg font-extrabold text-white tracking-wider uppercase flex items-center gap-2 group"
         >
           <span className="w-2.5 h-2.5 rounded-full bg-accent-blue group-hover:scale-125 transition-transform" />
-          <span>Kunal<span className="text-accent-purple">.</span></span>
+          <span>Kunal<span className="text-accent-blue">.</span></span>
         </a>
 
         {/* Desktop Nav Links */}
@@ -75,7 +75,7 @@ export default function Header({ onOpenTerminal }: HeaderProps) {
             href={DEV_PROFILE.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 rounded-xl bg-gradient-to-r from-accent-purple to-accent-blue text-white text-xs font-mono font-bold uppercase tracking-wider shadow-md hover:opacity-90 transition-opacity flex items-center gap-1.5"
+            className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-mono font-bold uppercase tracking-wider shadow-md shadow-blue-600/25 border border-blue-400/30 flex items-center gap-1.5 transition-all"
           >
             <FileText className="w-3.5 h-3.5" />
             <span>Resume</span>

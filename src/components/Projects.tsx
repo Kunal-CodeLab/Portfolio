@@ -39,7 +39,7 @@ export default function Projects() {
               CREATIVE WORKS
             </span>
             <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-              Featured Projects<span className="text-accent-purple">.</span>
+              Featured Projects<span className="text-accent-blue">.</span>
             </h2>
           </div>
           <p className="max-w-md text-zinc-400 text-sm font-sans leading-relaxed">
@@ -57,7 +57,7 @@ export default function Projects() {
                 onClick={() => setFilter(cat)}
                 className={`px-4 py-2 rounded-xl text-xs font-mono tracking-wider uppercase whitespace-nowrap transition-all duration-300 ${
                   filter === cat
-                    ? "bg-gradient-to-r from-accent-purple to-accent-blue text-white shadow-md font-bold"
+                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/20 font-bold border border-blue-400/30"
                     : "text-zinc-400 hover:text-white hover:bg-white/5 font-medium"
                 }`}
               >
@@ -108,7 +108,7 @@ export default function Projects() {
                         {project.category}
                       </span>
                       {project.highlighted && (
-                        <span className="px-2.5 py-0.5 rounded bg-accent-purple/20 text-accent-purple text-[9px] font-mono font-bold uppercase tracking-wider border border-accent-purple/30">
+                        <span className="px-2.5 py-0.5 rounded bg-blue-500/15 text-blue-400 text-[9px] font-mono font-bold uppercase tracking-wider border border-blue-500/30">
                           Flagship
                         </span>
                       )}

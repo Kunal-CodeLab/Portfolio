@@ -51,8 +51,8 @@ export default function Hero({ onOpenRecruiterModal }: HeroProps) {
 
   return (
     <section className="relative min-h-[90vh] flex flex-col justify-center pt-28 pb-16 dot-bg overflow-hidden">
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-accent-purple/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/3 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-accent-blue/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-accent-blue/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-accent-indigo/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center relative z-10 w-full overflow-hidden">
         {/* Left Column: Core Value & Bio */}
@@ -91,7 +91,7 @@ export default function Hero({ onOpenRecruiterModal }: HeroProps) {
           >
             <Code className="w-4 h-4 sm:w-5 sm:h-5 text-accent-blue shrink-0" />
             <span className="text-zinc-400 shrink-0">I'm a </span>
-            <span className="text-white font-semibold border-b-2 border-accent-purple pb-0.5 break-words max-w-full">
+            <span className="text-white font-semibold border-b-2 border-accent-blue pb-0.5 break-words max-w-full">
               {displayedRole}
             </span>
           </motion.div>
@@ -103,7 +103,7 @@ export default function Hero({ onOpenRecruiterModal }: HeroProps) {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="max-w-xl text-zinc-400 text-sm sm:text-lg leading-relaxed font-light mb-8 sm:mb-10 font-sans"
           >
-            Result-driven <span className="text-white font-medium">Full-Stack & Desktop Developer</span> with commercial freelance experience building live production web applications, automated cloud infrastructure (<span className="text-accent-blue font-medium">AWS/Terraform</span>), and scalable <span className="text-accent-purple italic font-medium">C# .NET 8</span> software.
+            Result-driven <span className="text-white font-medium">Full-Stack & Desktop Developer</span> with commercial freelance experience building live production web applications, automated cloud infrastructure (<span className="text-accent-blue font-medium">AWS/Terraform</span>), and scalable <span className="text-accent-blue italic font-medium">C# .NET 8</span> software.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -116,7 +116,7 @@ export default function Hero({ onOpenRecruiterModal }: HeroProps) {
             {onOpenRecruiterModal && (
               <button
                 onClick={onOpenRecruiterModal}
-                className="w-full sm:w-auto px-5 py-3.5 bg-gradient-to-r from-accent-purple to-accent-blue text-white text-[11px] font-bold uppercase tracking-widest rounded-sm flex items-center justify-center gap-2 hover:-translate-y-0.5 transition-transform duration-300 shadow-lg"
+                className="w-full sm:w-auto px-6 py-3.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 text-white text-[11px] font-bold uppercase tracking-widest rounded-xl flex items-center justify-center gap-2 hover:-translate-y-0.5 transition-all duration-300 shadow-lg shadow-blue-500/25 border border-blue-400/30"
               >
                 <span>30s Recruiter Pitch</span>
               </button>
@@ -124,7 +124,7 @@ export default function Hero({ onOpenRecruiterModal }: HeroProps) {
 
             <button
               onClick={handleScrollToProjects}
-              className="w-full sm:w-auto px-6 py-3.5 bg-white text-obsidian text-[11px] font-bold uppercase tracking-widest rounded-sm flex items-center justify-center gap-2 hover:bg-zinc-200 transition-colors duration-300 shadow-md"
+              className="w-full sm:w-auto px-6 py-3.5 bg-white text-obsidian hover:bg-zinc-200 text-[11px] font-bold uppercase tracking-widest rounded-xl flex items-center justify-center gap-2 hover:-translate-y-0.5 transition-all duration-300 shadow-md"
             >
               <span>Explore My Work</span>
             </button>
@@ -133,7 +133,7 @@ export default function Hero({ onOpenRecruiterModal }: HeroProps) {
               href={DEV_PROFILE.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-6 py-3.5 bg-transparent border border-white/20 text-white text-[11px] font-bold uppercase tracking-widest rounded-sm flex items-center justify-center gap-2 hover:bg-white/10 hover:border-white/40 transition-all duration-300"
+              className="w-full sm:w-auto px-6 py-3.5 bg-white/5 border border-white/15 text-white text-[11px] font-bold uppercase tracking-widest rounded-xl flex items-center justify-center gap-2 hover:bg-white/10 hover:border-white/30 hover:-translate-y-0.5 transition-all duration-300"
             >
               <span>View Resume PDF</span>
             </a>
@@ -176,11 +176,11 @@ export default function Hero({ onOpenRecruiterModal }: HeroProps) {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="w-full bg-white/[0.03] border border-white/10 rounded-2xl p-6 backdrop-blur-md relative overflow-hidden group hover:border-white/20 transition-all duration-300 shadow-xl"
           >
-            <div className="absolute top-[-20%] right-[-20%] w-48 h-48 bg-accent-purple/15 rounded-full blur-2xl pointer-events-none" />
-            <div className="absolute bottom-[-20%] left-[-20%] w-48 h-48 bg-accent-blue/15 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute top-[-20%] right-[-20%] w-48 h-48 bg-accent-blue/15 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute bottom-[-20%] left-[-20%] w-48 h-48 bg-accent-indigo/15 rounded-full blur-2xl pointer-events-none" />
 
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-accent-purple font-bold block">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-accent-blue font-bold block">
                 CAREER HIGHLIGHTS
               </span>
               <span className="px-2 py-0.5 rounded bg-cyber-teal/10 text-cyber-teal text-[9px] font-mono border border-cyber-teal/20 uppercase font-semibold">
@@ -203,7 +203,7 @@ export default function Hero({ onOpenRecruiterModal }: HeroProps) {
               <div className="flex flex-col border-b border-white/5 pb-2.5">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold text-white">Python Internship</span>
-                  <span className="text-[10px] text-accent-purple font-mono font-bold">30+ Defects</span>
+                  <span className="text-[10px] text-accent-blue font-mono font-bold">30+ Defects</span>
                 </div>
                 <span className="text-[11px] font-mono text-zinc-400 mt-0.5">Codveda Technologies</span>
               </div>

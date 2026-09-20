@@ -48,9 +48,9 @@ export default function RecruiterModal({ onClose }: RecruiterModalProps) {
         </div>
 
         <div className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-6 custom-scrollbar text-zinc-300">
-          <div className="p-4 rounded-2xl bg-accent-purple/10 border border-accent-purple/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="p-4 rounded-2xl bg-accent-blue/10 border border-accent-blue/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-accent-purple font-bold block">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-accent-blue font-bold block">
                 Executive Candidate Summary
               </span>
               <h4 className="text-white text-base font-bold font-display mt-0.5">

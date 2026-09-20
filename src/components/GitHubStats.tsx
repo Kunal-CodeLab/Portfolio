@@ -107,7 +107,7 @@ export default function GitHubStats() {
 
         <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/5 space-y-1">
           <div className="flex items-center gap-1.5 text-zinc-400 text-xs font-mono">
-            <GitFork className="w-3.5 h-3.5 text-accent-purple" />
+            <GitFork className="w-3.5 h-3.5 text-accent-blue" />
             <span>Forks</span>
           </div>
           <span className="text-lg font-bold font-mono text-white block">

@@ -27,7 +27,7 @@ export default function BentoAbout() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-6">
           <div>
-            <span className="text-xs font-mono font-semibold tracking-[0.2em] text-accent-purple uppercase block mb-3">
+            <span className="text-xs font-mono font-semibold tracking-[0.2em] text-accent-blue uppercase block mb-3">
               ABOUT & STACK
             </span>
             <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
@@ -59,7 +59,7 @@ export default function BentoAbout() {
 
                 <div className="flex items-center gap-3 self-start sm:self-auto">
                   <div className="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-gray-300 flex items-center gap-2">
-                    <Calendar className="w-3.5 h-3.5 text-accent-purple" />
+                    <Calendar className="w-3.5 h-3.5 text-accent-blue" />
                     <span>IST (Jaipur) — {formattedTime}</span>
                   </div>
                 </div>
@@ -75,7 +75,7 @@ export default function BentoAbout() {
                       Who I Am
                     </h4>
                     <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-                      I am a <strong className="text-white font-semibold">Full-Stack & Desktop Software Developer</strong> specializing in building high-performance web applications, automated cloud infrastructure, and low-latency C# .NET desktop tools. With commercial freelance experience delivering live business websites (<span className="text-accent-blue font-medium">Huzurr.com</span>) and Python internship experience at <span className="text-accent-purple font-medium">Codveda Technologies</span>, I focus on scalable software design, performance optimization, and secure system architectures.
+                      I am a <strong className="text-white font-semibold">Full-Stack & Desktop Software Developer</strong> specializing in building high-performance web applications, automated cloud infrastructure, and low-latency C# .NET desktop tools. With commercial freelance experience delivering live business websites (<span className="text-accent-blue font-medium">Huzurr.com</span>) and Python internship experience at <span className="text-accent-blue font-medium">Codveda Technologies</span>, I focus on scalable software design, performance optimization, and secure system architectures.
                     </p>
                   </div>
 
@@ -114,21 +114,21 @@ export default function BentoAbout() {
 
                 {/* Right: Built-in Professional Summary Card */}
                 <div className="lg:col-span-5 flex flex-col justify-between bg-white/[0.02] border border-white/5 rounded-2xl p-5 sm:p-6 relative overflow-hidden group/card hover:border-white/10 transition-colors">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-accent-purple/5 rounded-full blur-2xl pointer-events-none" />
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-accent-blue/5 rounded-full blur-2xl pointer-events-none" />
                   
                   <div>
-                    <h4 className="text-accent-purple font-display font-extrabold uppercase tracking-widest text-xs mb-3 flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent-purple inline-block"></span>
+                    <h4 className="text-accent-blue font-display font-extrabold uppercase tracking-widest text-xs mb-3 flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent-blue inline-block"></span>
                       Professional Summary
                     </h4>
                     <p className="text-gray-300 text-xs sm:text-sm leading-relaxed font-sans">
-                      Result-driven <strong className="text-white font-semibold">Full-Stack & Desktop Developer</strong> (BCA 6th Sem, JNU Jaipur) with commercial freelance experience building live production web apps, automated cloud infrastructure (<span className="text-accent-blue font-medium">AWS, Terraform, Ansible</span>), and scalable <span className="text-accent-purple font-medium">C# .NET 8</span> desktop software. Proven track record of improving web performance by <strong className="text-cyber-teal font-semibold">40%</strong>, resolving <strong className="text-cyber-teal font-semibold">30+ software defects</strong> during internship, and delivering end-to-end software solutions.
+                      Result-driven <strong className="text-white font-semibold">Full-Stack & Desktop Developer</strong> (BCA 6th Sem, JNU Jaipur) with commercial freelance experience building live production web apps, automated cloud infrastructure (<span className="text-accent-blue font-medium">AWS, Terraform, Ansible</span>), and scalable <span className="text-accent-blue font-medium">C# .NET 8</span> desktop software. Proven track record of improving web performance by <strong className="text-cyber-teal font-semibold">40%</strong>, resolving <strong className="text-cyber-teal font-semibold">30+ software defects</strong> during internship, and delivering end-to-end software solutions.
                     </p>
                   </div>
 
                   <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
                     <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-wider">Academic Placement</span>
-                    <span className="text-[10px] font-mono text-accent-purple font-bold">BCA 6TH SEM</span>
+                    <span className="text-[10px] font-mono text-accent-blue font-bold">BCA 6TH SEM</span>
                   </div>
                 </div>
               </div>
@@ -140,7 +140,7 @@ export default function BentoAbout() {
             <div>
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-white/5 mb-6 gap-4">
                 <div className="flex items-center gap-2">
-                  <Award className="w-5 h-5 text-accent-purple shrink-0" />
+                  <Award className="w-5 h-5 text-accent-blue shrink-0" />
                   <h3 className="font-display text-md font-extrabold text-white tracking-wide uppercase">
                     Interactive Stack Profile
                   </h3>
@@ -154,7 +154,7 @@ export default function BentoAbout() {
                       onClick={() => setActiveCategory(idx)}
                       className={`text-[10px] font-mono tracking-widest uppercase px-3 py-1.5 rounded-lg whitespace-nowrap transition-all duration-300 ${
                         activeCategory === idx
-                          ? "bg-gradient-to-r from-accent-blue to-accent-purple text-white shadow-md font-semibold"
+                          ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md font-semibold border border-blue-400/30"
                           : "text-zinc-400 hover:text-white hover:bg-white/5"
                       }`}
                     >
@@ -184,7 +184,7 @@ export default function BentoAbout() {
                           {activeCategory % 3 === 0 ? (
                             <Terminal className="w-4 h-4 text-accent-blue" />
                           ) : activeCategory % 3 === 1 ? (
-                            <Server className="w-4 h-4 text-accent-purple" />
+                            <Server className="w-4 h-4 text-accent-blue" />
                           ) : (
                             <Globe className="w-4 h-4 text-cyber-teal" />
                           )}
@@ -240,7 +240,7 @@ export default function BentoAbout() {
         <div className="mt-8 glass-panel rounded-3xl p-6 border border-white/10 relative overflow-hidden bg-white/[0.02]">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-accent-purple/20 border border-accent-purple/30 flex items-center justify-center text-accent-purple">
+              <div className="w-8 h-8 rounded-xl bg-accent-blue/15 border border-accent-blue/30 flex items-center justify-center text-accent-blue">
                 <CheckCircle2 className="w-4 h-4" />
               </div>
               <div>
@@ -273,10 +273,10 @@ export default function BentoAbout() {
               href="https://able-space-frontend-f5zn-ten.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3.5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/5 hover:border-accent-purple/40 transition-all group"
+              className="p-3.5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/5 hover:border-accent-blue/40 transition-all group"
             >
               <div className="flex items-center justify-between mb-1.5">
-                <span className="text-xs font-bold text-white group-hover:text-accent-purple transition-colors">AbleSpace Admin</span>
+                <span className="text-xs font-bold text-white group-hover:text-accent-blue transition-colors">AbleSpace Admin</span>
                 <ExternalLink className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors" />
               </div>
               <p className="text-[10px] font-mono text-zinc-400 leading-tight">
