@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { MessageSquare, X, Send, Bot, User, RefreshCw, FileText, Mail, Phone } from "lucide-react";
+import { MessageSquare, X, Send, Bot, User, RefreshCw, FileText, Mail, Phone, ExternalLink } from "lucide-react";
 import { DEV_PROFILE } from "../data";
 
 interface ChatMessage {
@@ -8,7 +8,7 @@ interface ChatMessage {
   sender: "user" | "ai";
   text: string;
   timestamp: string;
-  actions?: { label: string; action: string }[];
+  actions?: { label: string; action: string; url?: string }[];
 }
 
 const CATEGORIZED_PROMPTS = [
@@ -22,10 +22,11 @@ const CATEGORIZED_PROMPTS = [
     ]
   },
   {
-    category: "Tech & Projects",
+    category: "Featured Projects",
     prompts: [
       "Tell me about SmartOffice Workflow Manager",
-      "Tell me about ForensiX Pro (Incident Response)",
+      "Tell me about ForensiX Pro (DFIR)",
+      "Tell me about Insider Threat Detection",
       "Tell me about SonicBoard (.NET 8)",
       "DevOps Infrastructure (Terraform/AWS)"
     ]
@@ -52,7 +53,7 @@ export default function AIChatbot() {
     {
       id: "welcome",
       sender: "ai",
-      text: `Hello! I'm Kunal's AI Twin, trained on his exact resume & production codebase. Ask me anything about his freelance work (Huzurr.com), Python internship at Codveda, .NET 8 desktop apps, DevOps pipelines, or hiring availability!`,
+      text: `Hello! I am Kunal's AI Twin, trained directly on his verified resume, freelance delivery (Huzurr.com), Python internship at Codveda, and production software architecture (.NET 8 WPF, ForensiX Pro, DevOps pipelines).\n\nFeel free to select a prompt below or ask any technical or recruiter question!`,
       timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
       actions: [
         { label: "View Resume PDF", action: "resume" },
@@ -73,9 +74,24 @@ export default function AIChatbot() {
     }
   }, [messages, isOpen]);
 
-  const handleActionClick = (act: string) => {
+  // Close on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
+
+  const handleActionClick = (act: string, url?: string) => {
     if (act === "resume") {
       window.open(DEV_PROFILE.resumeUrl, "_blank");
+      return;
+    }
+    if (act === "url" && url) {
+      window.open(url, "_blank");
       return;
     }
     if (act === "email") {
@@ -85,7 +101,7 @@ export default function AIChatbot() {
       return;
     }
     if (act === "call") {
-      window.location.href = `tel:${DEV_PROFILE.phone}`;
+      window.location.href = `tel:${DEV_PROFILE.phone.replace(/\s+/g, '')}`;
       return;
     }
     if (act === "projects_scroll") {
@@ -102,22 +118,79 @@ export default function AIChatbot() {
     }
   };
 
-  const generateKnowledgeBaseResponse = (query: string): { text: string; actions?: { label: string; action: string }[] } => {
+  const generateKnowledgeBaseResponse = (query: string): { text: string; actions?: { label: string; action: string; url?: string }[] } => {
     const q = query.toLowerCase();
 
-    if (q.includes("why hire") || q.includes("standout") || q.includes("strength") || q.includes("why should we")) {
+    // 1. SmartOffice Workflow Manager
+    if (q.includes("smartoffice") || q.includes("smart office") || q.includes("workflow manager") || (q.includes("workflow") && !q.includes("experience"))) {
       return {
-        text: `Kunal is a result-driven Full-Stack & Desktop Developer with commercial freelance experience building live production web apps (Huzurr.com, Jawaileopardsafaris.com) and high-performance C# .NET 8 desktop tools.\n\nKey Highlights from Resume:\n• Proven track record of improving Google PageSpeed web performance by 40%\n• Virtual Python Intern at Codveda Technologies (resolved 30+ software defects, 25% efficiency gain)\n• Experienced across Full Stack (React/Node/Flask), C# .NET 8 WPF, and DevOps Infrastructure (Terraform, Ansible, AWS EC2/VPC)\n• 6th Sem BCA student at Jaipur National University — Available Immediately!`,
+        text: `SmartOffice Workflow Manager — Enterprise Desktop Workflow Suite:\n\n• Tech Stack: C# .NET 8.0, WPF Modern XAML, Clean Architecture (MVVM), SQLite WAL Engine, Microsoft.Extensions.Hosting\n• Multi-View Task Ecosystem: High-density DataGrid, 5-Stage Drag-and-Drop Kanban Board, and 42-Cell Monthly Calendar.\n• Real-Time SLA Engine: Configurable SLA countdowns (4h to 72h) with a background Hosted Service scanning every 30 seconds for automated escalation.\n• Executive Intelligence Hub: 4 pre-built report templates (Summary, Throughput, SLA Risk, Audit) with HTML preview & CSV/HTML exports.\n• Forensic Audit Trail: Immutable mutation log tracking operator ID, action types, UTC timestamps, and diff snapshots.`,
         actions: [
-          { label: "Open Resume PDF", action: "resume" },
-          { label: "Contact Email", action: "email" }
+          { label: "View on GitHub", action: "url", url: "https://github.com/Kunal-CodeLab/Smart-Office-Workflow" },
+          { label: "Projects Section", action: "projects_scroll" }
         ]
       };
     }
 
+    // 2. ForensiX Pro
+    if (q.includes("forensix") || q.includes("forensic") || q.includes("incident response") || q.includes("dfir")) {
+      return {
+        text: `ForensiX Pro — Digital Forensics & Incident Response Suite:\n\n• Tech Stack: Python 3.8+, PyQt5 Modern GUI, Low-Level NTFS/MFT & Binary Parsers, PowerShell .evtx Pipeline, SQLite Shadow Buffers, SHA-256 Engine\n• Windows Binary $I/$R Recycle Bin Parser: Recovers original file paths, FILETIME 64-bit timestamps, and direct 1-click restore.\n• Multi-Browser Extractor: Non-locking shadow-buffer SQLite extraction across Chrome, Edge, Firefox, Brave, and Opera.\n• Windows Event Log Parser (.evtx): High-speed extraction of Application, Security, and System logs via PowerShell pipelines.\n• Chain of Custody: Chunked SHA-256 evidence hashing and court-ready HTML/CSV reporting.`,
+        actions: [
+          { label: "View on GitHub", action: "url", url: "https://github.com/Kunal-CodeLab/ForensiX-Pro" },
+          { label: "Projects Section", action: "projects_scroll" }
+        ]
+      };
+    }
+
+    // 3. Insider Threat Detection System
+    if (q.includes("threat") || q.includes("insider") || q.includes("detection") || q.includes("telemetry") || q.includes("security")) {
+      return {
+        text: `Windows Insider Threat Detection System — Behavioral Endpoint Intelligence:\n\n• Tech Stack: Python 3.9+, Flask, Psutil, Win32 APIs, SQLite, Bootstrap 5 Dashboard\n• Endpoint Monitoring Agent: Lightweight background worker capturing process creations, mass file alterations (>50 files/min), and USB device connections via WMI / Win32 APIs.\n• Heuristic Risk Scoring Engine: Dynamic threat score (0-100) based on weighted anomaly rules (e.g. command shell spawning from Office binaries, shadow copy deletions).\n• Incident Investigation Console: Searchable audit logs with severity classification (LOW, MEDIUM, HIGH, CRITICAL) and CSV forensic exports.`,
+        actions: [
+          { label: "View on GitHub", action: "url", url: "https://github.com/Kunal-CodeLab/Insider-Threat-Detection-System" },
+          { label: "Projects Section", action: "projects_scroll" }
+        ]
+      };
+    }
+
+    // 4. SonicBoard
+    if (q.includes("sonicboard") || q.includes("soundboard") || (q.includes(".net") && q.includes("sound")) || q.includes("naudio")) {
+      return {
+        text: `SonicBoard — Low-Latency .NET 8 Soundboard Software:\n\n• Tech Stack: C# .NET 8.0, WPF, NAudio Audio Engine, Win32 User32.dll Hooks\n• WASAPI Audio Mixing: Low-latency shared mode audio stream playback with dynamic volume curves.\n• Global System Hotkeys: Low-level Win32 keyboard hooks (SetWindowsHookEx) ensuring reliable execution even inside full-screen games (Valorant, CS2).\n• Dual-Device Routing: Simultaneously streams sound to user headphones and a virtual microphone cable.`,
+        actions: [
+          { label: "View on GitHub", action: "url", url: "https://github.com/Kunal-CodeLab/SonicBoard" },
+          { label: "Projects Section", action: "projects_scroll" }
+        ]
+      };
+    }
+
+    // 5. DevOps & Cloud Infrastructure
+    if (q.includes("devops") || q.includes("terraform") || q.includes("ansible") || q.includes("aws") || q.includes("infrastructure") || q.includes("cloud")) {
+      return {
+        text: `Automated DevOps Infrastructure (IaC):\n\n• Tech Stack: Terraform, Ansible, AWS (EC2, VPC, S3, CloudWatch), Nginx, Prometheus, Grafana\n• Infrastructure as Code: Terraform modules provisioning multi-AZ VPC, private/public subnets, security groups, and EC2 instances.\n• Automated Configuration: Ansible playbooks configuring hardened Nginx reverse proxies with automated SSL and health check routines.\n• Observability: Centralized Prometheus metric scraping and Grafana dashboards for CPU, memory, and network throughput monitoring.`,
+        actions: [
+          { label: "View on GitHub", action: "url", url: "https://github.com/Kunal-CodeLab/AWS-IAC-TERRAFORM-ANSIBLE-PROJECT" },
+          { label: "Projects Section", action: "projects_scroll" }
+        ]
+      };
+    }
+
+    // 6. Why Hire
+    if (q.includes("why hire") || q.includes("standout") || q.includes("strength") || q.includes("why should we")) {
+      return {
+        text: `Why Kunal stands out for Software Engineering & DevOps roles:\n\n1. Real Commercial Delivery: Delivered live client production websites (Huzurr.com, Jawaileopardsafaris.com) and boosted PageSpeed performance by 40%.\n2. Strong Multi-Discipline Engineering: Proficient in C# .NET 8 (Clean Architecture/MVVM), Python backend systems, and automated DevOps infrastructure (AWS/Terraform/Ansible).\n3. Verified Industry Internship: Resolved 30+ defects and improved execution efficiency by 25% during Python internship at Codveda Technologies.\n4. Immediate Availability: BCA 6th Sem student available immediately for full-time fresher or internship roles with zero notice period.`,
+        actions: [
+          { label: "Open Resume PDF", action: "resume" },
+          { label: "Contact Kunal", action: "email" }
+        ]
+      };
+    }
+
+    // 7. Freelance & Commercial Experience
     if (q.includes("freelance") || q.includes("client") || q.includes("huzurr") || q.includes("jawai") || q.includes("codveda") || q.includes("intern") || q.includes("work experience")) {
       return {
-        text: `Kunal's Verified Work Experience:\n\n1. Freelance Full-Stack Developer (Self-Employed / Remote) [Feb 2025 – Present]:\n• Commercial Live Projects: Huzurr.com & Jawaileopardsafaris.com\n• Developed and deployed commercial client web apps, managing DNS, hosting, and security maintenance.\n• Boosted PageSpeed UI scores by 40%.\n\n2. Python Development Intern at Codveda Technologies [Aug 2025 – Sep 2025]:\n• Engineered modular Python backend components, increasing code execution efficiency by 25%.\n• Built automated testing routines resolving 30+ defects prior to staging build.`,
+        text: `Kunal's Verified Work & Commercial Experience:\n\n1. Freelance Full-Stack Developer (Remote / Self-Employed) [Feb 2025 – Present]:\n• Delivered production web applications including Huzurr.com and Jawaileopardsafaris.com.\n• Handled complete lifecycle: architecture design, responsive frontend, DNS routing, and web security.\n• Optimized Core Web Vitals resulting in 40% faster load times.\n\n2. Python Development Intern at Codveda Technologies [Aug 2025 – Sep 2025]:\n• Developed modular backend scripts and automation testing suites.\n• Resolved 30+ defects prior to staging releases, boosting execution efficiency by 25%.`,
         actions: [
           { label: "View Projects Section", action: "projects_scroll" },
           { label: "Open Resume PDF", action: "resume" }
@@ -125,9 +198,10 @@ export default function AIChatbot() {
       };
     }
 
+    // 8. Availability & Location
     if (q.includes("available") || q.includes("availability") || q.includes("notice") || q.includes("when can") || q.includes("join")) {
       return {
-        text: `Kunal is AVAILABLE IMMEDIATELY for Internship and Full-Time Fresher Developer roles (Frontend, Backend, Full Stack, .NET Developer, or DevOps).\n\nHe has zero notice period and can start working right away!`,
+        text: `Kunal is AVAILABLE IMMEDIATELY for Software Engineer, Full-Stack, .NET Developer, or DevOps Engineer roles.\n\n• Notice Period: Immediate / Zero Days\n• Location: Jaipur, Rajasthan (Open to Relocation across India & Remote Roles)\n• Graduation: BCA (2023 - 2026), 6th Semester at Jaipur National University.`,
         actions: [
           { label: "Copy Email Address", action: "email" },
           { label: "Call / WhatsApp", action: "call" }
@@ -137,79 +211,58 @@ export default function AIChatbot() {
 
     if (q.includes("reloc") || q.includes("remote") || q.includes("location") || q.includes("city") || q.includes("where")) {
       return {
-        text: `Kunal is based in Jaipur, Rajasthan, India, and is 100% open to both Remote roles and Relocating to major IT hubs (Bangalore, NCR/Gurgaon, Pune, Hyderabad, Mumbai, Jaipur, etc.).`,
+        text: `Kunal is based in Jaipur, Rajasthan, India, and is 100% open to:\n• Remote software engineering roles worldwide\n• On-site / hybrid relocation to major tech hubs (Bangalore, Gurgaon / NCR, Pune, Hyderabad, Mumbai, Jaipur, Noida).`,
         actions: [
-          { label: "Contact Details", action: "email" }
+          { label: "Contact Coordinates", action: "email" }
         ]
       };
     }
 
+    // 9. Salary
     if (q.includes("salary") || q.includes("stipend") || q.includes("ctc") || q.includes("remuneration") || q.includes("package")) {
       return {
-        text: `Kunal is open to industry-standard fresher salaries and internship stipends according to company benchmarks and growth opportunities. His primary focus is joining an ambitious engineering team!`,
+        text: `Kunal is open to competitive fresher industry standard packages and internship stipends aligned with company benchmarks. His core priority is contributing to impactful, high-scale engineering challenges!`,
+        actions: [
+          { label: "Open Resume PDF", action: "resume" },
+          { label: "Direct Email", action: "email" }
+        ]
+      };
+    }
+
+    // 10. Tech Stack & Skills
+    if (q.includes("stack") || q.includes("skill") || q.includes("technolog") || q.includes("python") || q.includes("react") || q.includes("c#")) {
+      return {
+        text: `Kunal's Core Technical Capabilities:\n\n• Core Languages: C# (.NET 8), Python 3.x, JavaScript (ES6+), TypeScript, HTML5, CSS3, PHP, SQL\n• Frameworks & Architecture: WPF / XAML, MVVM, Clean Architecture, React, Node.js, Express, Flask, PyQt5\n• DevOps & Cloud: AWS (EC2, VPC, S3, CloudWatch), Terraform, Ansible, Docker, Nginx, Prometheus, Grafana, Git/GitHub Actions\n• Systems & Low-Level: Win32 API Hooks, NAudio Engine, Binary Parsing ($I/$R), SQLite WAL Engine\n• Databases: MySQL, SQLite`,
         actions: [
           { label: "Open Resume PDF", action: "resume" }
         ]
       };
     }
 
-    if (q.includes("sonicboard") || q.includes("soundboard") || q.includes("c#") || q.includes(".net") || q.includes("wpf")) {
+    // 11. Education
+    if (q.includes("education") || q.includes("degree") || q.includes("college") || q.includes("university") || q.includes("bca") || q.includes("academic")) {
       return {
-        text: `SonicBoard – Premium .NET 8 WPF Soundboard Application:\n• Built on C# .NET 8 with NAudio engine for WASAPI shared audio mixing.\n• Win32 Low-Level Keyboard Hooks (SetWindowsHookEx) for global system hotkeys with keypress suppression during gaming (Valorant, CS2).\n• Multi-device audio routing (headphones + virtual audio cable) with smart mic auto-mute.`,
-        actions: [
-          { label: "View Project in Portfolio", action: "projects_scroll" }
-        ]
-      };
-    }
-
-    if (q.includes("devops") || q.includes("terraform") || q.includes("ansible") || q.includes("aws") || q.includes("infrastructure")) {
-      return {
-        text: `Automated DevOps Infrastructure (IaC):\n• Architected Infrastructure as Code using Terraform & Ansible scripts to provision multi-AZ AWS VPC subnets & EC2 instances.\n• Automated Nginx web deployment with 99.9% uptime and 50% faster incident response using CloudWatch, Prometheus, & Grafana monitoring.`,
-        actions: [
-          { label: "View Projects Section", action: "projects_scroll" }
-        ]
-      };
-    }
-
-    if (q.includes("gitauto") || q.includes("git auto") || q.includes("push") || q.includes("workspace")) {
-      return {
-        text: `GitAuto-Push – Developer Workspace Automation Utility:\n• Built with Node.js, JavaScript & Git API with a glassmorphic dashboard.\n• Automatically tracks local repo changes and performs background commits & pushes, reducing manual developer effort by 40%.`,
-        actions: [
-          { label: "View Projects Section", action: "projects_scroll" }
-        ]
-      };
-    }
-
-    if (q.includes("stack") || q.includes("skill") || q.includes("technolog") || q.includes("python") || q.includes("react")) {
-      return {
-        text: `Kunal's Technical Stack Breakdown (Verified Resume):\n\n• Languages: C# (.NET 8), JavaScript (ES6+), TypeScript, Python, HTML5, CSS3, PHP, SQL\n• Frameworks: WPF, Node.js, Express.js, React.js, PyQt5, C# Windows Forms, WordPress\n• DevOps & Cloud: AWS (EC2, VPC, S3, CloudWatch), Terraform, Ansible, Docker, Nginx, CI/CD, Prometheus, Grafana\n• Audio/System: NAudio Engine, Win32 API Hooks, WASAPI Routing, Multi-Threading\n• Databases: MySQL, SQLite`,
+        text: `Formal Academic Record:\n\n• Bachelor of Computer Applications (BCA) [2023 – 2026]: Jaipur National University, Jaipur (6th Semester / Active)\n• Senior Secondary (XII) Science Stream [2023]: Maharana Pratap School, Jaipur\n• Secondary (X) [2021]: The Learners Academy, Jaipur`,
         actions: [
           { label: "Open Resume PDF", action: "resume" }
         ]
       };
     }
 
-    if (q.includes("education") || q.includes("degree") || q.includes("college") || q.includes("university") || q.includes("bca")) {
-      return {
-        text: `Academic Qualifications:\n• Bachelor of Computer Applications (BCA) - Computer Science (2023 – 2026), Jaipur National University, Jaipur.\n• Senior Secondary (XII) - Science Stream (2023), Maharana Pratap School, Jaipur.\n• Secondary (X) (2021), The Learners Academy, Jaipur.`,
-        actions: [
-          { label: "Open Resume PDF", action: "resume" }
-        ]
-      };
-    }
-
+    // 12. Certifications
     if (q.includes("certif") || q.includes("hackathon") || q.includes("ctf") || q.includes("achievement")) {
       return {
-        text: `Certifications & Achievements:\n• Responsive Web Design Certification (300 Hours) – freeCodeCamp (Oct 2024)\n• Free DevOps Course Certification (CI/CD & Cloud) – IntelliPaat Academy (Aug 2025)\n• CSS (Basic) Skill Certification – HackerRank (Oct 2024)\n• Capture The Flag (CTF) Cybersecurity Hackathon Badge – CyberCure Technologies (Sep 2025)\n• Python Development Internship Training – Codveda Technologies (Sep 2025)`,
+        text: `Verified Certifications & Accreditations:\n\n• Responsive Web Design Certification (300 Hours) – freeCodeCamp (Oct 2024)\n• Free DevOps Course Certification (CI/CD & Cloud) – IntelliPaat Academy (Aug 2025)\n• CSS (Basic) Skill Certification – HackerRank (Oct 2024)\n• Capture The Flag (CTF) Cybersecurity Hackathon Badge – CyberCure Technologies (Sep 2025)\n• Python Internship Completion Certificate – Codveda Technologies (Sep 2025)`,
         actions: [
           { label: "Open Resume PDF", action: "resume" }
         ]
       };
     }
 
-    if (q.includes("contact") || q.includes("email") || q.includes("phone") || q.includes("number") || q.includes("reach")) {
+    // 13. Contact
+    if (q.includes("contact") || q.includes("email") || q.includes("phone") || q.includes("number") || q.includes("reach") || q.includes("linkedin") || q.includes("github")) {
       return {
-        text: `Contact Coordinates:\nEmail: ${DEV_PROFILE.email}\nPhone/WhatsApp: ${DEV_PROFILE.phone}\nLinkedIn: ${DEV_PROFILE.linkedin}\nGitHub: ${DEV_PROFILE.github}`,
+        text: `Direct Contact Coordinates:\n\n• Email: ${DEV_PROFILE.email}\n• Phone: ${DEV_PROFILE.phone}\n• GitHub: ${DEV_PROFILE.github}\n• LinkedIn: ${DEV_PROFILE.linkedin}\n• Status: Available Immediately`,
         actions: [
           { label: "Copy Email", action: "email" },
           { label: "Call / WhatsApp", action: "call" },
@@ -219,7 +272,7 @@ export default function AIChatbot() {
     }
 
     return {
-      text: `Kunal Choudhary is a result-driven Full-Stack & Desktop Developer (BCA 6th Sem, JNU Jaipur) with commercial freelance experience (Huzurr.com) and internship experience at Codveda. He is Available Immediately for remote or on-site roles!`,
+      text: `Kunal Choudhary is a Full-Stack & Desktop Software Developer (BCA 6th Sem, JNU Jaipur) with commercial freelance experience (Huzurr.com, Jawaileopardsafaris.com), verified internship experience at Codveda, and robust projects in C# .NET 8, Python DFIR, and DevOps infrastructure. He is Available Immediately for hire!`,
       actions: [
         { label: "Open Resume PDF", action: "resume" },
         { label: "Why Hire Kunal?", action: "why_hire" }
@@ -257,14 +310,25 @@ export default function AIChatbot() {
                   role: "user",
                   parts: [
                     {
-                      text: `You are Kunal Choudhary's AI Portfolio Twin. Answer professionally as Kunal's representative.
-Kunal's Verified Resume Summary:
-- Full-Stack Developer & BCA 6th Sem Student at Jaipur National University (2023-2026).
-- Freelance Work: Developed commercial live apps (Huzurr.com, Jawaileopardsafaris.com), boosting PageSpeed UI scores by 40%.
-- Python Intern at Codveda Technologies (resolved 30+ defects, 25% efficiency boost).
-- Key Projects: SmartOffice Workflow Manager (C# .NET 8, WPF, Clean Architecture/MVVM, SQLite WAL, SLA Engine), ForensiX Pro (Python, PyQt5, Binary $I/$R Parsers, .evtx Logs, SHA-256 Custody), Windows Insider Threat Detection System (Python, Flask, Windows Agent, Behavioral Analytics), SonicBoard (.NET 8 WPF, NAudio, Win32 Hooks), Automated DevOps (Terraform, Ansible, AWS EC2/VPC, CloudWatch).
-- Availability: Available Immediately, open to Remote and Relocating.
-- Contact: Email (kunal.codes5@gmail.com), Phone (+91 6377470431).
+                      text: `You are Kunal Choudhary's AI Portfolio Twin. Answer professionally, accurately, and concisely as Kunal's official technical representative.
+Rules:
+- NEVER use emojis in your responses.
+- Format responses cleanly with concise bullet points and bold technical terms.
+- Highlight verified achievements with exact metrics (e.g. 40% performance boost, 30+ defects resolved).
+
+Kunal's Profile & Resume:
+- Name: Kunal Choudhary | Role: Full-Stack, Desktop & DevOps Software Engineer
+- Education: Bachelor of Computer Applications (BCA 6th Sem, 2023-2026), Jaipur National University, Jaipur.
+- Freelance Experience: Built commercial client web apps (Huzurr.com, Jawaileopardsafaris.com), improving PageSpeed performance by 40%.
+- Internship: Python Developer Intern at Codveda Technologies (resolved 30+ defects, improved execution efficiency by 25%).
+- Core Projects:
+  1. SmartOffice Workflow Manager (C# .NET 8, WPF XAML, MVVM, SQLite WAL, SLA countdown background worker, 5-stage Kanban, 42-cell Calendar, diff-based forensic audit trail).
+  2. ForensiX Pro Incident Response Suite (Python 3.8+, PyQt5 GUI, Binary $I/$R Recycle Bin parser, non-locking SQLite browser history extraction, Windows .evtx event log pipeline, SHA-256 custody hashing).
+  3. Windows Insider Threat Detection System (Python, Flask, Psutil/Win32 APIs, mass file modification heuristic, high-risk process tree anomaly detection, real-time risk scoring).
+  4. SonicBoard (.NET 8 WPF, NAudio WASAPI shared audio mixing, Win32 SetWindowsHookEx hotkey hooks).
+  5. Automated DevOps Infrastructure (Terraform, Ansible, AWS EC2, VPC, Nginx, Prometheus, Grafana, CloudWatch).
+- Availability: Available Immediately, open to Remote and Relocation across major IT hubs.
+- Contact: Email (kunal.codes5@gmail.com), Phone (+91 6377470431), GitHub (https://github.com/Kunal-CodeLab), LinkedIn (https://linkedin.com/in/kunal-choudhary-it).
 
 User Question: ${textToSend}`
                     }
@@ -277,14 +341,16 @@ User Question: ${textToSend}`
 
         if (response.ok) {
           const data = await response.json();
-          const aiText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-          if (aiText) {
+          const rawAiText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+          if (rawAiText) {
+            // Ensure no emojis in AI output
+            const cleanedText = rawAiText.replace(/[\u{1F600}-\u{1F6FF}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '');
             setMessages((prev) => [
               ...prev,
               {
                 id: (Date.now() + 1).toString(),
                 sender: "ai",
-                text: aiText,
+                text: cleanedText.trim(),
                 timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
                 actions: [
                   { label: "Open Resume PDF", action: "resume" },
@@ -311,7 +377,7 @@ User Question: ${textToSend}`
           }
         ]);
         setIsLoading(false);
-      }, 400);
+      }, 350);
 
     } catch (err) {
       console.error("AI Error:", err);
@@ -437,12 +503,13 @@ User Question: ${textToSend}`
                         {msg.actions.map((act, idx) => (
                           <button
                             key={idx}
-                            onClick={() => handleActionClick(act.action)}
+                            onClick={() => handleActionClick(act.action, act.url)}
                             className="px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-[10px] font-mono font-semibold text-white border border-white/10 flex items-center gap-1 transition-all"
                           >
                             {act.action === "resume" && <FileText className="w-3 h-3 text-accent-blue" />}
                             {act.action === "email" && <Mail className="w-3 h-3 text-cyber-teal" />}
                             {act.action === "call" && <Phone className="w-3 h-3 text-accent-blue" />}
+                            {act.action === "url" && <ExternalLink className="w-3 h-3 text-cyan-400" />}
                             <span>{act.action === "email" && copied ? "Copied!" : act.label}</span>
                           </button>
                         ))}
@@ -503,7 +570,7 @@ User Question: ${textToSend}`
             <div className="p-3 bg-obsidian border-t border-white/10 flex items-center gap-2">
               <input
                 type="text"
-                placeholder="Ask about Huzurr.com, .NET 8, availability..."
+                placeholder="Ask about SmartOffice, ForensiX Pro, Huzurr, .NET 8..."
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
