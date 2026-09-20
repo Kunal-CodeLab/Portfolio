@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { MapPin, Calendar, Award, Code, Globe, Terminal, Server, Star, CheckCircle2, ArrowUpRight, ExternalLink } from "lucide-react";
+import { MapPin, Calendar, Award, Code, Globe, Terminal, Server, Star, CheckCircle2, ArrowUpRight, ExternalLink, Database, Cloud } from "lucide-react";
 import { DEV_PROFILE, SKILL_CATEGORIES, CERTIFICATIONS } from "../data";
 import GitHubStats from "./GitHubStats";
 
@@ -138,26 +138,39 @@ export default function BentoAbout() {
           {/* Tile 3: Interactive Skills Stack (Takes 2 Columns) */}
           <div id="skills" className="md:col-span-2 glass-panel rounded-3xl p-5 sm:p-8 flex flex-col justify-between relative group">
             <div>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-white/5 mb-6 gap-4">
-                <div className="flex items-center gap-2">
-                  <Award className="w-5 h-5 text-accent-blue shrink-0" />
-                  <h3 className="font-display text-md font-extrabold text-white tracking-wide uppercase">
-                    Interactive Stack Profile
-                  </h3>
+              <div className="pb-6 border-b border-white/5 mb-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
+                      <Award className="w-4 h-4 text-accent-blue" />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-base font-extrabold text-white tracking-wide uppercase">
+                        Interactive Stack Profile
+                      </h3>
+                      <p className="text-[11px] font-mono text-zinc-400">
+                        Explore verified technical proficiencies by domain
+                      </p>
+                    </div>
+                  </div>
+                  <span className="self-start sm:self-auto text-[10px] font-mono text-cyan-400/90 bg-cyan-500/10 border border-cyan-500/20 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                    {SKILL_CATEGORIES.length} Domains
+                  </span>
                 </div>
 
-                {/* Subcategory selectors */}
-                <div className="flex items-center gap-1 bg-white/5 rounded-xl p-1 border border-white/5 overflow-x-auto no-scrollbar max-w-full">
+                {/* Subcategory selectors - Flex Wrap so tabs never cut off */}
+                <div className="flex flex-wrap items-center gap-2 p-1.5 bg-black/40 rounded-2xl border border-white/5 w-full">
                   {SKILL_CATEGORIES.map((cat, idx) => (
                     <button
                       key={idx}
                       onClick={() => setActiveCategory(idx)}
-                      className={`text-[10px] font-mono tracking-widest uppercase px-3 py-1.5 rounded-lg whitespace-nowrap transition-all duration-300 ${
+                      className={`text-[11px] font-mono tracking-wider uppercase px-3.5 py-2 rounded-xl transition-all duration-300 flex items-center gap-2 ${
                         activeCategory === idx
-                          ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md font-semibold border border-blue-400/30"
-                          : "text-zinc-400 hover:text-white hover:bg-white/5"
+                          ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/20 font-semibold border border-blue-400/30"
+                          : "text-zinc-400 hover:text-white hover:bg-white/5 border border-transparent"
                       }`}
                     >
+                      <span className={`w-1.5 h-1.5 rounded-full ${activeCategory === idx ? "bg-cyan-300 animate-pulse" : "bg-zinc-600"}`} />
                       {cat.title}
                     </button>
                   ))}
@@ -180,11 +193,15 @@ export default function BentoAbout() {
                         key={index} 
                         className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-all duration-300"
                       >
-                        <div className="p-2 rounded-lg bg-white/5 flex items-center justify-center">
-                          {activeCategory % 3 === 0 ? (
+                        <div className="p-2 rounded-lg bg-white/5 flex items-center justify-center shrink-0">
+                          {activeCategory === 0 ? (
                             <Terminal className="w-4 h-4 text-accent-blue" />
-                          ) : activeCategory % 3 === 1 ? (
+                          ) : activeCategory === 1 ? (
                             <Server className="w-4 h-4 text-accent-blue" />
+                          ) : activeCategory === 2 ? (
+                            <Database className="w-4 h-4 text-cyber-teal" />
+                          ) : activeCategory === 3 ? (
+                            <Cloud className="w-4 h-4 text-accent-blue" />
                           ) : (
                             <Globe className="w-4 h-4 text-cyber-teal" />
                           )}
