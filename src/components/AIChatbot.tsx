@@ -262,7 +262,7 @@ Kunal's Verified Resume Summary:
 - Full-Stack Developer & BCA 6th Sem Student at Jaipur National University (2023-2026).
 - Freelance Work: Developed commercial live apps (Huzurr.com, Jawaileopardsafaris.com), boosting PageSpeed UI scores by 40%.
 - Python Intern at Codveda Technologies (resolved 30+ defects, 25% efficiency boost).
-- Key Projects: SonicBoard (.NET 8 WPF, NAudio, Win32 Hooks), GitAuto-Push (Node.js workspace automation), Automated DevOps (Terraform, Ansible, AWS EC2/VPC, CloudWatch), Smart File Management (C# .NET), Forensic Tool (PyQt5).
+- Key Projects: SmartOffice Workflow Manager (C# .NET 8, WPF, Clean Architecture/MVVM, SQLite WAL, SLA Engine), ForensiX Pro (Python, PyQt5, Binary $I/$R Parsers, .evtx Logs, SHA-256 Custody), Windows Insider Threat Detection System (Python, Flask, Windows Agent, Behavioral Analytics), SonicBoard (.NET 8 WPF, NAudio, Win32 Hooks), Automated DevOps (Terraform, Ansible, AWS EC2/VPC, CloudWatch).
 - Availability: Available Immediately, open to Remote and Relocating.
 - Contact: Email (kunal.codes5@gmail.com), Phone (+91 6377470431).
 

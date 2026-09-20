@@ -10,7 +10,7 @@ export default function Projects() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const categories = ["All", "Web Application", "Desktop Application", "DevOps", "Take-Home Tasks"];
+  const categories = ["All", "Desktop Application", "Security & Forensics", "DevOps", "Take-Home Tasks"];
 
   const filteredProjects = useMemo(() => {
     return PROJECTS.filter((proj) => {

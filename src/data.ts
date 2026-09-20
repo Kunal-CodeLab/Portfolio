@@ -97,6 +97,67 @@ export const EDUCATION_TIMELINE: EducationMilestone[] = [
 
 export const PROJECTS: Project[] = [
   {
+    id: "smart-office-workflow",
+    title: "SmartOffice Workflow Manager",
+    description: "An enterprise-grade desktop workflow orchestration and operational intelligence suite engineered with C# .NET 8, WPF XAML, and SQLite WAL engine for real-time SLA tracking, dynamic Kanban, calendar scheduling, and forensic audit trails.",
+    longDescription: "SmartOffice Workflow Manager is an enterprise-grade desktop operational command center engineered with modern C# .NET 8, WPF XAML, and Clean Architecture (MVVM). Designed to eliminate fragmented spreadsheets and ad-hoc task trackers, it features real-time SLA breach countdowns, background automation workers scanning every 30s, dynamic multi-view task ecosystems (DataGrid, 5-stage Kanban, 42-cell Monthly Calendar), forensic audit trail diffing, and multi-template executive intelligence reporting.",
+    features: [
+      "Multi-View Task Ecosystem: High-density DataGrid, 5-Stage Drag-and-Drop Kanban Board, and 42-Cell Monthly Calendar",
+      "Real-Time SLA Engine: Configurable SLA targets (4h to 72h) with Hosted Service scanning every 30s for automated escalation",
+      "Executive Intelligence Hub: 4 pre-built templates (Summary, Throughput, SLA Risk, Audit) with HTML preview & CSV/HTML exports",
+      "Forensic Audit Hub: Immutable mutation tracking with operator ID, action types, entity names, UTC timestamps, and diff snapshots",
+      "Action Checklists & Asset Management: Subtask milestone breakdowns with instant strikethrough feedback and document attachment tracking",
+      "High-Performance Architecture: SQLite with WAL journaling & WPF subpixel ClearType rendering for high-DPI displays"
+    ],
+    architecture: "C# .NET 8.0, WPF / Modern XAML, Clean Architecture + MVVM, SQLite (WAL Engine), Microsoft.Extensions.Hosting",
+    tags: ["C# .NET 8", "WPF / XAML", "Clean Architecture", "MVVM", "SQLite (WAL)", "SLA Automation"],
+    imageSrc: "/images/fileorganiser.PNG",
+    liveUrl: "https://github.com/Kunal-CodeLab/Smart-Office-Workflow",
+    githubUrl: "https://github.com/Kunal-CodeLab/Smart-Office-Workflow",
+    category: "Desktop Application",
+    highlighted: true
+  },
+  {
+    id: "forensix-pro",
+    title: "ForensiX Pro - Incident Response Suite",
+    description: "An enterprise-grade Windows digital forensics and incident response (DFIR) investigation suite built with Python and PyQt5 for low-level disk parsing, browser history auditing, and cryptographic chain of custody.",
+    longDescription: "ForensiX Pro is a high-performance digital forensics investigation platform engineered for cyber incident responders, forensic examiners, and security auditors. Operating with minimal CPU/RAM overhead, it delivers end-to-end evidence discovery: Windows binary $I/$R Recycle Bin parsing (v1 & v2), non-locking SQLite browser history extraction (Chrome, Edge, Firefox, Brave, Opera), Windows .evtx event log analysis, zero-drop timeline normalization, chunked SHA-256 evidence hashing, and court-ready HTML/CSV reporting.",
+    features: [
+      "Windows Binary $I/$R Recycle Bin Parser: Recovers original file paths, FILETIME 64-bit timestamps, and direct 1-click restore",
+      "Multi-Profile Browser Extractor: Non-locking shadow-buffer SQLite extraction across Chrome, Edge, Firefox, Brave, Opera",
+      "Windows Event Log Parser (.evtx): High-speed extraction of Application, Security, and System logs via PowerShell pipelines",
+      "Unified Forensic Timeline Creator: Zero-drop universal timestamp normalization across ISO-8601, Unix, and FILETIME",
+      "Cryptographic Chain of Custody: Chunked SHA-256 hashing, ZIP packaging with JSON metadata, and court-ready HTML/CSV reports"
+    ],
+    architecture: "Python 3.8+, PyQt5 Modern GUI, Low-level NTFS/MFT & Binary Parsers, PowerShell .evtx Pipeline, SQLite Shadow Buffers, SHA-256 Hash Engine",
+    tags: ["Python 3.8+", "PyQt5", "Digital Forensics", "Binary Parser ($I/$R)", "Event Logs (.evtx)", "SHA-256 Custody"],
+    imageSrc: "/images/forensic analysis tool.PNG",
+    liveUrl: "https://github.com/Kunal-CodeLab/ForensiX-Pro",
+    githubUrl: "https://github.com/Kunal-CodeLab/ForensiX-Pro",
+    category: "Security & Forensics",
+    highlighted: true
+  },
+  {
+    id: "insider-threat-detection",
+    title: "Windows Insider Threat Detection System",
+    description: "A consent-based organizational security & forensic monitoring system with a lightweight Windows background agent, Flask REST backend, behavioral anomaly analysis, and court-ready incident triage reports.",
+    longDescription: "A consent-based organizational security platform designed to detect suspicious insider activities, collect forensically sound digital evidence, and generate court-ready incident reports. Includes a modular Windows background agent (Core, Monitors, Forensics, Analysis), centralized Flask API dashboard, real-time risk scoring for anomalous actions, and cryptographic chain of custody preservation.",
+    features: [
+      "Consent-Based Security Agent: Background Windows agent monitoring suspicious processes, unauthorized USB storage, and anomalous activities",
+      "Forensic Evidence Collection: Captures tamper-evident system logs, memory artifacts, and digital evidence following strict chain of custody",
+      "Behavioral Anomaly & Risk Engine: Heuristic analysis module calculating user risk scores and flagging high-risk security events",
+      "Admin Web Command Center: Flask REST backend and web interface for centralized endpoint monitoring and incident triage",
+      "Court-Ready Incident Reporting: Structured audit trail generation with multi-format export capabilities for compliance"
+    ],
+    architecture: "Python 3.8+, Windows Agent Core, Flask REST API, Web Dashboard, Heuristic Risk Scoring, SQLite Evidence Store",
+    tags: ["Python", "Flask API", "Windows Agent", "Threat Detection", "Digital Forensics", "Incident Response"],
+    imageSrc: "/images/vulscanner.PNG",
+    liveUrl: "https://github.com/Kunal-CodeLab/Insider-Threat-Detection-System",
+    githubUrl: "https://github.com/Kunal-CodeLab/Insider-Threat-Detection-System",
+    category: "Security & Forensics",
+    highlighted: true
+  },
+  {
     id: "sonicboard",
     title: "SonicBoard Streaming Soundboard",
     description: "A low-latency desktop soundboard application built specifically for Windows operating systems enabling gamers and streamers to organize custom sound effects and assign instantaneous global hotkey shortcuts.",
@@ -133,7 +194,7 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://github.com/Kunal-CodeLab",
     githubUrl: "https://github.com/Kunal-CodeLab",
     category: "Desktop Application",
-    highlighted: true
+    highlighted: false
   },
   {
     id: "automated-devops",
