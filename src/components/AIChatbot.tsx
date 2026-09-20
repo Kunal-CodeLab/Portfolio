@@ -11,33 +11,42 @@ interface ChatMessage {
   actions?: { label: string; action: string; url?: string }[];
 }
 
-const CATEGORIZED_PROMPTS = [
+interface PromptItem {
+  label: string;
+  query: string;
+}
+
+interface PromptCategory {
+  category: string;
+  prompts: PromptItem[];
+}
+
+const CATEGORIZED_PROMPTS: PromptCategory[] = [
   {
-    category: "Recruiter Inquiries",
+    category: "Recruiters",
     prompts: [
-      "Why should we hire Kunal?",
-      "Commercial Work & Freelance Clients",
-      "Availability & Notice Period",
-      "Salary & Relocation Flexibility"
+      { label: "Why Hire Kunal?", query: "Why should we hire Kunal?" },
+      { label: "Freelance & Huzurr", query: "Tell me about your freelance work and Huzurr.com" },
+      { label: "Notice & Joining", query: "When can Kunal join?" },
+      { label: "Salary & Relocation", query: "What are your salary and relocation preferences?" }
     ]
   },
   {
-    category: "Featured Projects",
+    category: "Projects",
     prompts: [
-      "Tell me about SmartOffice Workflow Manager",
-      "Tell me about ForensiX Pro (DFIR)",
-      "Tell me about Insider Threat Detection",
-      "Tell me about SonicBoard (.NET 8)",
-      "DevOps Infrastructure (Terraform/AWS)"
+      { label: "SmartOffice (.NET 8)", query: "Tell me about SmartOffice Workflow Manager" },
+      { label: "ForensiX Pro (DFIR)", query: "Tell me about ForensiX Pro" },
+      { label: "Insider Threat System", query: "Tell me about Insider Threat Detection" },
+      { label: "DevOps (AWS/Terraform)", query: "Tell me about DevOps Infrastructure" }
     ]
   },
   {
-    category: "Quick Actions",
+    category: "Quick Info",
     prompts: [
-      "Open Resume PDF",
-      "Contact Details & Email",
-      "Education & Degree",
-      "Certifications & CTF Badge"
+      { label: "Resume PDF", query: "How can I view your resume?" },
+      { label: "Contact Coordinates", query: "What are your contact details?" },
+      { label: "BCA Degree", query: "What is your education and degree?" },
+      { label: "Certifications & CTF", query: "What certifications and hackathon badges do you hold?" }
     ]
   }
 ];
@@ -537,16 +546,17 @@ User Question: ${textToSend}`
               <div ref={messagesEndRef} />
             </div>
 
-            <div className="p-2.5 bg-obsidian/90 border-t border-white/10 flex flex-col gap-2">
-              <div className="flex items-center gap-1 overflow-x-auto no-scrollbar pb-1">
+            <div className="p-3 bg-obsidian/95 border-t border-white/10 flex flex-col gap-2">
+              {/* Category Segmented Bar */}
+              <div className="grid grid-cols-3 gap-1 bg-white/5 p-1 rounded-xl border border-white/5">
                 {CATEGORIZED_PROMPTS.map((cat, idx) => (
                   <button
                     key={idx}
                     onClick={() => setActiveCategoryTab(idx)}
-                    className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold whitespace-nowrap transition-all ${
+                    className={`py-1.5 px-2 rounded-lg text-[11px] font-mono font-bold tracking-wider uppercase transition-all duration-200 text-center truncate ${
                       activeCategoryTab === idx
-                        ? "bg-accent-blue text-white shadow-sm"
-                        : "text-zinc-400 hover:text-white bg-white/5"
+                        ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md font-semibold border border-blue-400/30"
+                        : "text-zinc-400 hover:text-white hover:bg-white/5"
                     }`}
                   >
                     {cat.category}
@@ -554,14 +564,16 @@ User Question: ${textToSend}`
                 ))}
               </div>
 
-              <div className="flex gap-1.5 overflow-x-auto no-scrollbar">
-                {CATEGORIZED_PROMPTS[activeCategoryTab].prompts.map((prompt, idx) => (
+              {/* 2-Column Prompt Buttons Grid */}
+              <div className="grid grid-cols-2 gap-1.5 pt-0.5">
+                {CATEGORIZED_PROMPTS[activeCategoryTab].prompts.map((item, idx) => (
                   <button
                     key={idx}
-                    onClick={() => handleSendMessage(prompt)}
-                    className="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-[10px] font-mono text-zinc-300 hover:text-white whitespace-nowrap transition-colors"
+                    onClick={() => handleSendMessage(item.query)}
+                    className="px-2.5 py-1.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] hover:border-blue-400/30 border border-white/5 text-[11px] font-mono text-zinc-300 hover:text-white transition-all text-left flex items-center justify-between group shadow-sm"
                   >
-                    {prompt}
+                    <span className="truncate">{item.label}</span>
+                    <span className="text-[10px] text-zinc-500 group-hover:text-accent-blue transition-colors ml-1 shrink-0">→</span>
                   </button>
                 ))}
               </div>
