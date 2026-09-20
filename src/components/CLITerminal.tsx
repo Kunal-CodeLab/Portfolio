@@ -36,6 +36,14 @@ export default function CLITerminal({ onClose }: CLITerminalProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    const originalStyle = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = originalStyle;
+    };
+  }, []);
+
+  useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [lines]);
 

@@ -13,7 +13,7 @@ interface ChatMessage {
 
 const CATEGORIZED_PROMPTS = [
   {
-    category: "👔 For Recruiters",
+    category: "Recruiter Inquiries",
     prompts: [
       "Why should we hire Kunal?",
       "Commercial Work & Freelance Clients",
@@ -22,16 +22,16 @@ const CATEGORIZED_PROMPTS = [
     ]
   },
   {
-    category: "💻 Tech & Projects",
+    category: "Tech & Projects",
     prompts: [
+      "Tell me about SmartOffice Workflow Manager",
+      "Tell me about ForensiX Pro (Incident Response)",
       "Tell me about SonicBoard (.NET 8)",
-      "DevOps Infrastructure (Terraform/AWS)",
-      "Python Intern at Codveda",
-      "Technical Stack Overview"
+      "DevOps Infrastructure (Terraform/AWS)"
     ]
   },
   {
-    category: "🔗 Links & Actions",
+    category: "Quick Actions",
     prompts: [
       "Open Resume PDF",
       "Contact Details & Email",
@@ -247,7 +247,7 @@ export default function AIChatbot() {
 
       if (apiKey) {
         const response = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

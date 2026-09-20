@@ -10,21 +10,34 @@ interface HeaderProps {
 export default function Header({ onOpenTerminal }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("about");
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+
+      const sections = ["about", "projects", "skills", "education", "contact"];
+      const scrollPos = window.scrollY + 220;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && scrollPos >= el.offsetTop) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
     };
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { label: "About", href: "#about" },
-    { label: "Projects", href: "#projects" },
-    { label: "Skills", href: "#skills" },
-    { label: "Education", href: "#education" },
-    { label: "Contact", href: "#contact" }
+    { label: "About", href: "#about", id: "about" },
+    { label: "Projects", href: "#projects", id: "projects" },
+    { label: "Skills", href: "#skills", id: "skills" },
+    { label: "Education", href: "#education", id: "education" },
+    { label: "Contact", href: "#contact", id: "contact" }
   ];
 
   return (
@@ -47,15 +60,28 @@ export default function Header({ onOpenTerminal }: HeaderProps) {
 
         {/* Desktop Nav Links */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-xs font-mono text-zinc-400 hover:text-white tracking-widest uppercase transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.id;
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                className={`text-xs font-mono tracking-widest uppercase transition-all duration-200 relative py-1 ${
+                  isActive
+                    ? "text-white font-bold"
+                    : "text-zinc-400 hover:text-white"
+                }`}
+              >
+                {link.label}
+                {isActive && (
+                  <motion.span
+                    layoutId="activeNavIndicator"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-blue rounded-full"
+                  />
+                )}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Right CTA Group */}

@@ -43,9 +43,11 @@ export default function GitHubStats() {
             forksCount: totalForks || 14,
             loading: false
           });
+          return;
         }
       } catch (err) {
         console.warn("GitHub API Fetch fallback active:", err);
+      } finally {
         setMetrics((prev) => ({ ...prev, loading: false }));
       }
     }

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "motion/react";
 import { X, Zap, FileText, CheckCircle2, Mail, Phone } from "lucide-react";
 import { DEV_PROFILE } from "../data";
@@ -7,6 +8,13 @@ interface RecruiterModalProps {
 }
 
 export default function RecruiterModal({ onClose }: RecruiterModalProps) {
+  useEffect(() => {
+    const originalStyle = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = originalStyle;
+    };
+  }, []);
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
       <motion.div
