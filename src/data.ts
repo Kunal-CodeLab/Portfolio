@@ -10,7 +10,7 @@ export const DEV_PROFILE = {
   github: "https://github.com/Kunal-CodeLab",
   linkedin: "https://linkedin.com/in/kunal-choudhary-it",
   twitter: "https://twitter.com",
-  resumeUrl: "https://drive.google.com/file/d/1io4SZFXUB5Hwyhnu9vQ2s4leV4EZs-gE/view?usp=sharing",
+  resumeUrl: "https://drive.google.com/file/d/1GtXFZeYJbPdFBrsYY-wXCPJLwC8SRU3V/view?usp=sharing",
   avatar: "/images/developer_avatar.png",
   bio: "A passionate IT professional specializing in Software Development, Automation, and DevOps. Building secure, high-performance desktop and web applications while exploring digital forensics.",
   stats: [
